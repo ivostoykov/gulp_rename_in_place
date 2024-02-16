@@ -19,6 +19,7 @@ Or, run `gulp watch-mp3`` for this specific task. This starts the watch of the c
 1. Ensure Node.js and Gulp are installed.
 2. clone the repository
 ```git clone https://github.com/ivostoykov/gulp_rename_in_place.git```
-3. In the `gulpfile.js`, adjust `baseDir` to your target directory for monitoring.
-4. To start the file monitoring and renaming task, execute `gulp` or `gulp watch-mp3` in your terminal.
+3. run `npm install` to bring all related packages
+4. In the `gulpfile.js`, adjust `baseDir` to your target directory for monitoring.
+5. To start the file monitoring and renaming task, execute `gulp` or `gulp watch-mp3` in your terminal.
 
