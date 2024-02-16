@@ -3,7 +3,7 @@ const watch = require('gulp-watch');
 const path = require('path');
 const fs = require('fs');
 
-const baseDir = '/home/ivo/Downloads/';
+const baseDir = '.';
 const mp3Path = `${baseDir}*.mp3`;
 
 function getNewName(originalName){
