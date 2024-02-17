@@ -4,11 +4,11 @@ const path = require('path');
 const fs = require('fs');
 
 const baseDir = '.';
-const mp3Path = `${baseDir}*.mp3`;
+const fileToRename = `${baseDir}*.*`;
 
 function getNewName(originalName){
     const newName = originalName
-    .replace(/-{1,}|\,{1,}/g, ' ')
+    .replace(/-{1,}|\,{1,}|!{1,}/g, ' ')
     .replace(/\.{1,}/g, ' ')
     .trim()
     .replace(/\s{1,}/g, '_')
@@ -17,12 +17,16 @@ function getNewName(originalName){
     return newName !== originalName ? newName : false;
 }
 
-gulp.task('watch-mp3', function() {
-    return watch(mp3Path, { base: baseDir, events: ['add', 'change'] }, (file) => {
-        // No need for an asynchronous handling or global flag
+gulp.task('rename-file', function() {
+    return watch(fileToRename, { base: baseDir, events: ['add', 'change'] }, (file) => {
+        // Wait previous process to complete
         setTimeout(() => {
             try {
                 const oldPath = path.join(baseDir, file.basename);
+                if (!fs.existsSync(oldPath)) {
+                    return;
+                }
+
                 const newFileName = getNewName(file.stem);
                 if (!newFileName) {
                     return;
@@ -34,8 +38,8 @@ gulp.task('watch-mp3', function() {
             } catch (err) {
                 console.error(`Error renaming file: ${err}`);
             }
-        }, 750);
+        }, 800);
     });
 });
 
-gulp.task('default', gulp.series('watch-mp3'));
+gulp.task('default', gulp.series('rename-file'));

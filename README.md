@@ -8,7 +8,7 @@ Renames specified file types directly within a target directory, eliminating the
 The script is designed to be flexible, allowing users to define the file types they wish to rename. gulp_rename is intentionally bypassed to avoid the unintended creation of additional files, ensuring a more streamlined and efficient renaming process without generating duplicates.
 
 ## Usage
-To initiate the file monitoring process, first, adjust the `gulpfile.js` configuration by setting `baseDir` to the directory you intend to watch for changes. Then, to start the monitoring task, open a terminal in the directory containing the `gulp_rename_in_place` and execute `gulp` if it's the only task.
+To initiate the file monitoring process, first, adjust the `gulpfile.js` configuration by setting `baseDir` to the directory you intend to watch for changes and specifying the files to be monitored (i.e. `*.txt`) with `fileToRename`. Then, to start the monitoring task, open a terminal in the directory containing the `gulp_rename_in_place` and execute `gulp` if it's the only task.
 Or, run `gulp watch-mp3`` for this specific task. This starts the watch of the configured directory and automatically renames the files when any is created or the name is modified.
 
 ### Prerequisites
@@ -20,6 +20,6 @@ Or, run `gulp watch-mp3`` for this specific task. This starts the watch of the c
 2. clone the repository
 ```git clone https://github.com/ivostoykov/gulp_rename_in_place.git```
 3. run `npm install` to bring all related packages
-4. In the `gulpfile.js`, adjust `baseDir` to your target directory for monitoring.
-5. To start the file monitoring and renaming task, execute `gulp` or `gulp watch-mp3` in your terminal.
+4. In the `gulpfile.js`, modify `baseDir` and `fileToRename` to specify the directory and file you want to monitor.
+5. To start the file monitoring and renaming task, execute `gulp` or `gulp rename-file` in your terminal.
 
